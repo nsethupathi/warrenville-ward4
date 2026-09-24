@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Josh Zyskowski for Alderperson</title>
+<style>
+  :root{
+    --soil-dark:#241a12;
+    --soil:#3a2a1b;
+    --bark:#5c4530;
+    --terracotta:#bf6b3d;
+    --terracotta-bright:#e08a4f;
+    --olive:#75824a;
+    --olive-bright:#93a35e;
+    --cream:#f6efe1;
+    --tan:#cdbfa0;
+    --text-dark:#2c2213;
+    --text-muted:#5c5240;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    background:var(--cream);
+    color:var(--text-dark);
+    line-height:1.5;
+  }
+  a{color:inherit;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:var(--soil-dark);
+    border-bottom:1px solid rgba(224,138,79,0.25);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;min-height:56px;padding-top:8px;padding-bottom:8px;}
+  nav .brand{color:var(--cream);font-weight:700;font-size:15px;letter-spacing:0.02em;}
+  nav .brand span{color:var(--terracotta-bright);}
+  nav ul{list-style:none;display:flex;gap:22px;}
+  nav a{color:var(--tan);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:0.03em;text-transform:uppercase;transition:color .15s;}
+  nav a:hover{color:var(--terracotta-bright);}
+  @media(max-width:600px){
+    nav .wrap{flex-wrap:wrap;justify-content:center;row-gap:8px;}
+    nav .brand{width:100%;text-align:center;}
+    nav ul{width:100%;justify-content:center;text-align:center;}
+  }
+
+  /* HERO */
+  .hero{
+    position:relative;
+    color:var(--cream);
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute;inset:0;
+    background-image:url('images/farm-bg.jpg');
+    background-size:cover;
+    background-position:center 55%;
+  }
+  .hero-overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(36,26,18,0.75) 0%, rgba(36,26,18,0.88) 55%, var(--soil-dark) 100%);
+  }
+  .hero-content{
+    position:relative;z-index:2;
+    padding:76px 24px 60px;
+    text-align:center;
+  }
+  .hero-content .eyebrow{
+    display:inline-block;
+    color:var(--terracotta-bright);
+    font-weight:700;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    font-size:12px;
+    border:1px solid rgba(224,138,79,0.5);
+    border-radius:20px;
+    padding:5px 14px;
+    margin-bottom:18px;
+  }
+  .hero-content h1{
+    font-size:clamp(32px,5vw,50px);
+    font-weight:800;
+    line-height:1.08;
+    margin-bottom:14px;
+    letter-spacing:-0.01em;
+  }
+  .hero-content h1 em{
+    font-style:normal;
+    color:var(--terracotta-bright);
+  }
+  .hero-content p.sub{
+    max-width:560px;
+    margin:0 auto 26px;
+    color:#eee3d0;
+    font-size:17px;
+  }
+  .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;padding:12px 24px;border-radius:6px;font-weight:700;font-size:14px;
+    text-decoration:none;letter-spacing:0.02em;
+    transition:transform .12s ease, background .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--terracotta);color:var(--cream);}
+  .btn-primary:hover{background:var(--terracotta-bright);}
+  .btn-outline{border:1px solid var(--tan);color:var(--cream);}
+  .btn-outline:hover{border-color:var(--terracotta-bright);color:var(--terracotta-bright);}
+
+  /* SECTION HEADINGS */
+  .section{padding:52px 0;}
+  .section-alt{background:var(--soil);color:var(--cream);}
+  .kicker{
+    color:var(--bark);
+    font-weight:700;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    font-size:12px;
+    margin-bottom:8px;
+  }
+  .section-alt .kicker{color:var(--terracotta-bright);}
+  h2{font-size:clamp(24px,3.2vw,32px);font-weight:800;margin-bottom:8px;letter-spacing:-0.01em;}
+  .section > .wrap > p.lead{color:var(--text-muted);max-width:640px;margin-bottom:28px;}
+  .section-alt p.lead{color:var(--tan);}
+
+  /* ISSUES */
+  .issues{display:grid;grid-template-columns:1fr;gap:20px;}
+  @media(min-width:720px){.issues{grid-template-columns:1fr 1fr;}}
+  .issue-card{
+    background:#fff;
+    border:1px solid #e6ddc9;
+    border-left:4px solid var(--terracotta);
+    border-radius:8px;
+    padding:24px;
+  }
+  .issue-card h3{font-size:19px;font-weight:800;margin-bottom:10px;}
+  .issue-card p{color:var(--text-muted);font-size:14.5px;margin-bottom:10px;}
+
+  /* ABOUT */
+  .about-inner{
+    display:flex;flex-direction:column;align-items:center;gap:28px;text-align:center;
+  }
+  @media(min-width:760px){
+    .about-inner{flex-direction:row;text-align:left;align-items:flex-start;}
+  }
+  .about-photo{
+    flex-shrink:0;width:200px;
+  }
+  .about-photo img{
+    display:block;width:100%;aspect-ratio:1/1;object-fit:cover;
+    border-radius:12px;border:2px solid var(--terracotta);
+  }
+  .about-text p{color:var(--tan);font-size:15px;margin-bottom:12px;}
+  .about-text p:last-child{margin-bottom:0;}
+  .about-text strong{color:var(--cream);}
+
+  /* ABOUT / GET INVOLVED */
+  .involve-grid{display:grid;grid-template-columns:1fr;gap:16px;}
+  @media(min-width:720px){.involve-grid{grid-template-columns:repeat(3,1fr);}}
+  .involve-card{
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(224,138,79,0.25);
+    border-radius:8px;
+    padding:20px;
+  }
+  .involve-card h4{color:var(--terracotta-bright);font-size:15px;font-weight:700;margin-bottom:6px;}
+  .involve-card p{font-size:13.5px;color:var(--tan);}
+
+  /* FOOTER / CONTACT */
+  footer{
+    background:var(--soil-dark);color:var(--tan);
+    padding:32px 0;text-align:center;font-size:13px;
+    border-top:1px solid rgba(224,138,79,0.15);
+  }
+  footer .fname{color:var(--cream);font-weight:700;margin-bottom:4px;}
+  footer a.email{color:var(--terracotta-bright);text-decoration:none;font-weight:600;}
+  footer .disclaimer{margin-top:14px;color:#6b5f4b;font-size:11.5px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">JOSH <span>ZYSKOWSKI</span></div>
+    <ul>
+      <li><a href="#issues">Issues</a></li>
+      <li><a href="#involved">Get Involved</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content wrap">
+    <span class="eyebrow">Warrenville · Ward 4 · Alderperson</span>
+    <h1>Josh Zyskowski <em>for Alderperson</em></h1>
+    <p class="sub">A local business owner and farmer running to put Warrenville's community first — removing the Flock surveillance cameras and bringing native plants to our bare, unused spaces.</p>
+    <div class="hero-btns">
+      <a class="btn btn-primary" href="#involved">Get Involved</a>
+      <a class="btn btn-outline" href="#issues">See the Issues</a>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="issues">
+  <div class="wrap">
+    <div class="kicker">Where I Stand</div>
+    <h2>The Issues That Brought Me In</h2>
+    <p class="lead">Two problems I hear about again and again from neighbors around Ward 4.</p>
+
+    <div class="issues">
+      <div class="issue-card">
+        <h3>Remove the Flock Cameras</h3>
+        <p>Warrenville residents have repeatedly asked the council to remove the Flock license-plate cameras installed around our neighborhoods. That request has gone unanswered. I'll push to take them down and put decisions like this back in residents' hands, not on autopilot.</p>
+      </div>
+
+      <div class="issue-card">
+        <h3>Bring Native Plants to Warrenville</h3>
+        <p>Too many bare, unused spaces around town could be doing more for us — less mowing, less runoff, more pollinators. As a farmer, I want to help the city introduce native plantings to these spaces and make Warrenville a little greener and a little wilder.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="about">
+  <div class="wrap about-inner">
+    <div class="about-photo">
+      <img src="images/josh-portrait.jpg" alt="Josh Zyskowski">
+    </div>
+    <div class="about-text">
+      <div class="kicker">Why I'm Running</div>
+      <h2 style="color:var(--cream)">A Local Business Owner and Farmer</h2>
+      <p>I run a local business and a farm here in Warrenville, and I've seen firsthand what happens when city decisions get made without the people who actually live here in the room.</p>
+      <p><strong>Community needs should come before private interests.</strong> I'm running to bring more residents into local politics — not just at election time, but in the everyday decisions that shape our neighborhoods.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="involved">
+  <div class="wrap">
+    <div class="kicker">Take Action</div>
+    <h2>Get Involved</h2>
+    <p class="lead">Ward 4 wins this by showing up. Here's how to help.</p>
+    <div class="involve-grid">
+      <div class="involve-card" style="background:#fff;border-color:#e6ddc9;">
+        <h4 style="color:var(--terracotta);">Talk to Your Neighbors</h4>
+        <p style="color:var(--text-muted);">Let people on your street know a candidate is actually listening on Flock cameras and native plantings.</p>
+      </div>
+      <div class="involve-card" style="background:#fff;border-color:#e6ddc9;">
+        <h4 style="color:var(--terracotta);">Volunteer</h4>
+        <p style="color:var(--text-muted);">Help with canvassing, yard signs, or a few hours at a community event before election day.</p>
+      </div>
+      <div class="involve-card" style="background:#fff;border-color:#e6ddc9;">
+        <h4 style="color:var(--terracotta);">Show Up to Vote</h4>
+        <p style="color:var(--text-muted);">Make sure you're registered at your current Ward 4 address and have a plan to vote.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="fname">Josh Zyskowski for Alderperson</div>
+    <p>Have an idea for how to improve Warrenville? Email your suggestions to <a class="email" href="mailto:josh4ward4@proton.me">josh4ward4@proton.me</a></p>
+    <div class="disclaimer">Friends for Josh Zyskowski</div>
+  </div>
+</footer>
+
+</body>
+</html>
